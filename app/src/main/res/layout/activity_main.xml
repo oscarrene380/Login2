@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fndapp"
+    tools:context="com.seguridapp.sdlg.login2.MainActivity">
+
+    <TextView
+        android:id="@+id/tvSaludo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etUsuario"
+        android:layout_alignLeft="@+id/tvCuenta"
+        android:layout_alignStart="@+id/tvCuenta"
+        android:layout_marginBottom="18dp"
+        android:fontFamily="sans-serif"
+        android:text="Iniciar Sesión"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_above="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_above="@+id/btIngresar"
+        android:layout_alignLeft="@+id/etUsuario"
+        android:layout_alignStart="@+id/etUsuario"
+        android:layout_marginBottom="26dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btIngresar"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvCuenta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:background="@color/colorPrimary"
+        android:onClick="OnButtonClick"
+        android:text="Ingresar"
+        android:textColor="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/btRegistrar"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="Registrar"
+        android:text="Registrarse"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/tvCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btRegistrar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="¿No tienes una cuenta?"
+        android:textColor="@android:color/background_light" />
+</RelativeLayout>

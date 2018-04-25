@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Login2</string>
+    <string name="EmptyString" />
+    <string name="title_activity_maps">Map</string>
+</resources>

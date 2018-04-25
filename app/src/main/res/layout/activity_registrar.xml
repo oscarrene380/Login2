@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context="com.seguridapp.sdlg.login2.RegistrarActivity">
+
+    <TextView
+        android:id="@+id/tvRegistrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Regístrate"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvRegistrate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvRegistrate"
+        android:text="y se parte de miles de personas que transitan de forma segura"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvRegistrate1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etEmail"
+        android:layout_marginTop="22dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etConfirmar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="21dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Confirmar Contraseña"
+        android:inputType="textPassword"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btRegistrar"
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etConfirmar"
+        android:layout_marginTop="52dp"
+        android:background="@color/colorPrimary"
+        android:onClick="Registrar"
+        android:text="Registrarme"
+        android:textColor="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btRegistrar"
+        android:layout_alignBottom="@+id/btRegistrar"
+        android:layout_alignLeft="@+id/tvRegistrate"
+        android:layout_alignStart="@+id/tvRegistrate"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp"
+        android:background="@color/colorAccent"
+        android:onClick="Cancelar"
+        android:text="Cancelar"
+        android:textColor="@android:color/background_light" />
+</RelativeLayout>

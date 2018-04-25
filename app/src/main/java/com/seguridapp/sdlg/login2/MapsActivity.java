@@ -49,7 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         marcador = mMap.addMarker(new MarkerOptions()
                 .position(coordenadas)
                 .title("Estás acá")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
         );
         mMap.animateCamera(miUbicacion);
     }

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -113,30 +114,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        /*
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 
-        mMap.setOnMapLongClickListener(new OnMapLongClickListener() {
-            @Override
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+           @Override
             public void onMapLongClick(LatLng latLng) {
                 mMap.addMarker(new MarkerOptions()
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icmarcadormapa))
                         .anchor(0.0f,1.0f)
                         .position(latLng)
+
                 );
             }
         });
-        mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Toast.makeText(getApplicationContext(),"Zona marcada como peligrosa",Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });*/
+        });
 
         miUbicacion();
     }

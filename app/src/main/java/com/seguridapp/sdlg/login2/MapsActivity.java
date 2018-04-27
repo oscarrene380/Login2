@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -30,6 +33,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double lat = 0;
     double lng = 0;
 
+    EditText titulo;
+    Spinner marcadores;
+    Button guardar;
+    LatLng punto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        titulo=(EditText)findViewById(R.id.txtTitulo);
+        marcadores=(Spinner)findViewById(R.id.spinMarcadores);
+        guardar=(Button)findViewById(R.id.btnGuardar);
     }
 
 
@@ -124,14 +136,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
            @Override
             public void onMapLongClick(LatLng latLng) {
+               mMap.clear();
+               punto=latLng;
+
                 mMap.addMarker(new MarkerOptions()
+                        .title("Nuevo Marcador")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icmarcadormapa))
                         .anchor(0.0f,1.0f)
-                        .position(latLng)
-
+                        .position(punto)
                 );
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto,16));
+                titulo.setEnabled(true);
+                guardar.setEnabled(true);
             }
+
         });
+        mostrar();
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -142,13 +162,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         miUbicacion();
     }
+    public void guardar(View view)
+    {
+        Marcador marcador=new Marcador(titulo.getText().toString().trim(),punto.latitude,punto.longitude);
+        marcador.ingresar(this);
+        titulo.setText("");
+        titulo.setEnabled(false);
+        guardar.setEnabled(false);
+        mostrar();
+    }
+    public void mostrar()
+    {
+        marcadores.setAdapter(new Marcador().obtenerMarcadores(this));
+    }
 
+    public void mostrarMarcador(View view)
+    {
+        mMap.clear();
+        Marcador m=(Marcador)marcadores.getSelectedItem();
+        punto=new LatLng(m.getLatitud(),m.getLongitud());
+        mMap.addMarker(new MarkerOptions().position(punto).title(m.getTitulo()));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto,174));
 
-
-
-
-
-
+    }
 
     public void Atras(View v)
     {

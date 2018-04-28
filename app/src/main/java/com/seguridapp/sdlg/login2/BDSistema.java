@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BDSistema extends SQLiteOpenHelper {
 
     static String nombre="BDSistema";
-    static int version=1;
+    static int version=2;
 
     String sqlCrear = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT)";
     String sqlCrear1 = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT, Alias TEXT)";
@@ -19,13 +19,17 @@ public class BDSistema extends SQLiteOpenHelper {
     public BDSistema(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-    public BDSistema(Context context){super(context,nombre,null,version);}
+    /*public BDSistema(Context context)
+    {
+        super(context,nombre,null,version);
+
+    }*/
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Si no existe la BD, crea la BD, la crea y ejecuta los siguientes comandos.
         db.execSQL(sqlCrear);
-        db.execSQL(sqlMarcador);
+        //db.execSQL(sqlMarcador);
     }
 
     @Override
@@ -33,10 +37,10 @@ public class BDSistema extends SQLiteOpenHelper {
 
         //Se elimina la versión anterior de la BD
         db.execSQL("DROP TABLE IF EXISTS tblUsuarios");
-
+       // db.execSQL("DROP TABLE IF EXISTS marcadores");
         //Se crea la nueva versión de la tabla
         db.execSQL(sqlCrear);
-        db.execSQL(sqlMarcador);
+       // db.execSQL(sqlMarcador);
 
     }
 

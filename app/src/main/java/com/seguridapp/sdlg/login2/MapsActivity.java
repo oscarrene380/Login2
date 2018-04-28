@@ -151,7 +151,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
         });
-        mostrar();
+        //mostrar();
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -162,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         miUbicacion();
     }
-    public void guardar(View view)
+    /*public void guardar(View view)
     {
         Marcador marcador=new Marcador(titulo.getText().toString().trim(),punto.latitude,punto.longitude);
         marcador.ingresar(this);
@@ -184,7 +184,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(punto).title(m.getTitulo()));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto,174));
 
-    }
+    }*/
 
     public void Atras(View v)
     {

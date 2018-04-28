@@ -1,20 +1,12 @@
 package com.seguridapp.sdlg.login2;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.widget.ArrayAdapter;
-
-import java.util.ArrayList;
-
 /**
  * Created by Don Jose on 27/04/2018.
  */
 
 public class Marcador
 {
-    private String titulo;
+    /*private String titulo;
     private double latitud,longitud;
     public Marcador(String titulo,double latitud,double longitud)
     {
@@ -78,5 +70,5 @@ public class Marcador
         return escritura(context).insert("marcadores",null,content);
     }
 
-
+*/
 }

@@ -48,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
+        //mostrarMarcadores();
     }
 
 
@@ -108,6 +109,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    //Método para mostrar los marcadores guardados
+    public void mostrarMarcadores(GoogleMap googleMap) {
+        try{
+            mMap = googleMap;
+            double latitud;
+            double longitud;
+            /*c = bd.rawQuery("Select count(*) from tblPosiciones",null);
+            int total = c.getInt(0);*/
+            c = bd.rawQuery("Select * from tblPosiciones",null);
+            if (c.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    latitud= c.getDouble(0);
+                    longitud= c.getDouble(1);
+                    LatLng punto = new LatLng(latitud,longitud);
+                    mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                            .anchor(0.0f,1.0f)
+                            .position(punto)
+                    );
+                } while(c.moveToNext());
+
+
+                Toast.makeText(getApplicationContext(),"Marcadores actualizados exitosamente",Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"No hay marcadores en la base de Datos",Toast.LENGTH_SHORT).show();
+            }
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Ha ocurrido un error inesperado",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+
 
 
     /**
@@ -121,7 +160,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
 
         mMap = googleMap;
 
@@ -147,6 +185,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .anchor(0.0f,1.0f)
                             .position(latLng)
                     );
+
                 }
                 catch(Exception e){
                     Toast.makeText(getApplicationContext(),"No se pudieron guardar los datos",Toast.LENGTH_LONG).show();
@@ -163,6 +202,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
         miUbicacion();
+        mostrarMarcadores(googleMap);
+
     }
 
     public void Atras(View v)

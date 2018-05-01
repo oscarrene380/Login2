@@ -121,7 +121,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        miUbicacion();
+
+
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
@@ -161,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
+        miUbicacion();
     }
 
     public void Atras(View v)

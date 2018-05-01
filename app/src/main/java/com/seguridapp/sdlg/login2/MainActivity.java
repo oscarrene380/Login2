@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         EditText pss = findViewById(R.id.etPassword);
         usr.setText("");
         pss.setText("");
-        bdSistema = new BDSistema(this,"BDSistema",null,2);
+        bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
         IniciarBD();
 

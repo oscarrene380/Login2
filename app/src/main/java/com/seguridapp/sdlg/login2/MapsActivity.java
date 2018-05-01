@@ -4,6 +4,8 @@ import android.Manifest.permission;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -11,14 +13,13 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -32,11 +33,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker marcador;
     double lat = 0;
     double lng = 0;
-
-    EditText titulo;
-    Spinner marcadores;
-    Button guardar;
-    LatLng punto;
+    BDSistema bdSistema;
+    SQLiteDatabase bd;
+    Cursor c;
+    String consulta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        titulo=(EditText)findViewById(R.id.txtTitulo);
-        marcadores=(Spinner)findViewById(R.id.spinMarcadores);
-        guardar=(Button)findViewById(R.id.btnGuardar);
+        bdSistema = new BDSistema(this,"BDSistema",null,1);
+        bd = bdSistema.getWritableDatabase();
     }
 
 
@@ -112,7 +110,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -124,35 +121,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        miUbicacion();
         mMap = googleMap;
 
-
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
 
 
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-           @Override
+        mMap.setOnMapLongClickListener(new OnMapLongClickListener() {
+            @Override
             public void onMapLongClick(LatLng latLng) {
-               mMap.clear();
-               punto=latLng;
+                double latitud = latLng.latitude;
+                double longitud = latLng.longitude;
+                consulta = "insert into tblPosiciones(latitud,longitud)";
+                consulta += "values ("+latitud+","+longitud+")";
 
-                mMap.addMarker(new MarkerOptions()
-                        .title("Nuevo Marcador")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icmarcadormapa))
-                        .anchor(0.0f,1.0f)
-                        .position(punto)
-                );
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto,16));
-                titulo.setEnabled(true);
-                guardar.setEnabled(true);
+                try{
+                    bd.execSQL(consulta);
+                    Toast.makeText(getApplicationContext(),"Marcador guardado en\nLatitud: "+latitud+"\nLongitud:  "+longitud,Toast.LENGTH_SHORT).show();
+                    mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                            .anchor(0.0f,1.0f)
+                            .position(latLng)
+                    );
+                }
+                catch(Exception e){
+                    Toast.makeText(getApplicationContext(),"No se pudieron guardar los datos",Toast.LENGTH_LONG).show();
+                }
+
             }
-
         });
-        //mostrar();
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Toast.makeText(getApplicationContext(),"Zona marcada como peligrosa",Toast.LENGTH_SHORT).show();
@@ -160,31 +161,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        miUbicacion();
-    }
-    /*public void guardar(View view)
-    {
-        Marcador marcador=new Marcador(titulo.getText().toString().trim(),punto.latitude,punto.longitude);
-        marcador.ingresar(this);
-        titulo.setText("");
-        titulo.setEnabled(false);
-        guardar.setEnabled(false);
-        mostrar();
-    }
-    public void mostrar()
-    {
-        marcadores.setAdapter(new Marcador().obtenerMarcadores(this));
-    }
 
-    public void mostrarMarcador(View view)
-    {
-        mMap.clear();
-        Marcador m=(Marcador)marcadores.getSelectedItem();
-        punto=new LatLng(m.getLatitud(),m.getLongitud());
-        mMap.addMarker(new MarkerOptions().position(punto).title(m.getTitulo()));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto,174));
-
-    }*/
+    }
 
     public void Atras(View v)
     {

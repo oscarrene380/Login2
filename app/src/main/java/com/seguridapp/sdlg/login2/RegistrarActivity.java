@@ -75,7 +75,8 @@ public class RegistrarActivity extends AppCompatActivity {
             AlertDialog alerta1 = alerta.create();
             alerta1.show();
         }
-        else if (usuarios.validarCorreo(email)){
+        else if (usuarios.validarCorreo())
+        {
             alerta.setMessage("El correo eléctronico ya existe en el registro");
             alerta.setTitle("Error");
             alerta.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -94,17 +95,33 @@ public class RegistrarActivity extends AppCompatActivity {
         else
         {
             usuarios.setPassword(pass);
-            usuarios.setUsuario(email);
-            alerta.setMessage("Registro agregado exitosamente");
-            alerta.setTitle("Error");
-            alerta.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Atras();
-                }
-            });
-            AlertDialog alerta1 = alerta.create();
-            alerta1.show();
+            usuarios.setEmail(email);
+            if(usuarios.registrarUsuario())
+            {
+                alerta.setMessage("Registro agregado exitosamente");
+                alerta.setTitle("Registro");
+                alerta.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Atras();
+                    }
+                });
+                AlertDialog alerta1 = alerta.create();
+                alerta1.show();
+            }
+            else
+            {
+                alerta.setMessage("No se pudo registrar!");
+                alerta.setTitle("Registro");
+                alerta.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Atras();
+                    }
+                });
+                AlertDialog alerta1 = alerta.create();
+                alerta1.show();
+            }
 
         }
     }

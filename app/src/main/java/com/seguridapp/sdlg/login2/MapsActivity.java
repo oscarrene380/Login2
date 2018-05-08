@@ -46,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
         //mostrarMarcadores();

@@ -1,23 +1,24 @@
 package com.seguridapp.sdlg.login2;
 
-import java.util.ArrayList;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Usuario on 18/4/2018.
  */
 
-public class Usuarios {
+public class Usuarios extends AppCompatActivity
+{
 
-    ArrayList arrayUsuarios = new ArrayList();
+    /*ArrayList arrayUsuarios = new ArrayList();
     ArrayList arrayPassword = new ArrayList();
     public Usuarios()
     {
         agregarRegistros();
     }
 
-    /**
-     * Método para agregar registros a los arrayList
-     */
+
     void agregarRegistros()
     {
         arrayUsuarios.add("hola@gmail.com");
@@ -42,11 +43,7 @@ public class Usuarios {
 
     //Validar cuentas
 
-    /**
-     * Método para saber si un usuario existe o no
-     * @param usuario recibe el correo electrónico a evaluar
-     * @return retorna verdadero si existe y falso si no existe
-     */
+
     public boolean validarCorreo(String usuario)
     {
         return arrayUsuarios.contains(usuario);
@@ -71,5 +68,75 @@ public class Usuarios {
         else{
             return false;
         }
+    }*/
+
+    private String email;
+    private String password;
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    BDSistema bdSistema;
+    String Consulta;
+    SQLiteDatabase bd;
+    Cursor c;
+    public Usuarios()
+    {
+        bdSistema = new BDSistema(this,"BDSistema",null,1);
+        bd = bdSistema.getWritableDatabase();
+        bd=bdSistema.getReadableDatabase();
+    }
+    public boolean registrarUsuario()
+    {
+        String consulgta=null;
+        boolean resultado=false;
+        try
+        {
+            Consulta = "insert into tblUsuarios (Email,Password) ";
+            Consulta += "VALUES ('"+getEmail()+"' , '"+getPassword()+"')";
+            bd.execSQL(Consulta);
+            resultado=true;
+        }
+        catch (Exception ex)
+        {
+            resultado=false;
+        }
+        return resultado;
+    }
+
+    public boolean validarCorreo()
+    {
+        String consulta="SELECT * FROM tblUsuarios WHERE Email='"+getEmail()+"' ";
+        boolean resultado=false;
+        try
+        {
+            c=bd.rawQuery(consulta,null);
+            if(c.moveToFirst())
+            {
+                resultado=true;
+            }
+        }
+        catch (Exception ex)
+        {
+            resultado=false;
+        }
+        return resultado;
     }
 }

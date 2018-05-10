@@ -33,6 +33,7 @@ public class BienvenidaActivity extends AppCompatActivity {
     {
         Intent i = new Intent(BienvenidaActivity.this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void CerrarSesion(View v)
@@ -44,6 +45,7 @@ public class BienvenidaActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Atras();
+        finish();
     }
 
 

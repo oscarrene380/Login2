@@ -17,39 +17,20 @@ public class RegistrarActivity extends AppCompatActivity
     private String email;
     private String password;
 
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
 
     BDSistema bdSistema;
     String Consulta;
     SQLiteDatabase bd;
     Cursor c;
 
-    public boolean registrarUsuario()
+    public boolean registrarUsuario(String email,String password)
     {
         String consulgta=null;
         boolean resultado=false;
         try
         {
             Consulta = "insert into tblUsuarios (Email,Password) ";
-            Consulta += "VALUES ('"+getEmail()+"' , '"+getPassword()+"')";
+            Consulta += "VALUES ('"+email+"' , '"+password+"')";
             bd.execSQL(Consulta);
             resultado=true;
         }
@@ -60,9 +41,9 @@ public class RegistrarActivity extends AppCompatActivity
         return resultado;
     }
 
-    public boolean validarCorreo()
+    public boolean validarCorreo(String email)
     {
-        String consulta="SELECT * FROM tblUsuarios WHERE Email='"+getEmail()+"' ";
+        String consulta="SELECT * FROM tblUsuarios WHERE Email='"+email+"' ";
         boolean resultado=false;
         try
         {
@@ -85,12 +66,15 @@ public class RegistrarActivity extends AppCompatActivity
         bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
         bd=bdSistema.getReadableDatabase();
+        email=null;
+        password=null;
     }
 
     void Atras()
     {
         Intent i = new Intent(RegistrarActivity.this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void Cancelar(View v)
@@ -145,7 +129,7 @@ public class RegistrarActivity extends AppCompatActivity
             AlertDialog alerta1 = alerta.create();
             alerta1.show();
         }
-        else if (validarCorreo())
+        else if (validarCorreo(email))
         {
             alerta.setMessage("El correo eléctronico ya existe en el registro");
             alerta.setTitle("Error");
@@ -164,9 +148,9 @@ public class RegistrarActivity extends AppCompatActivity
         }
         else
         {
-            setPassword(pass);
-            setEmail(email);
-            if(registrarUsuario())
+            this.email=email;
+            password=pass;
+            if(registrarUsuario(this.email,this.password))
             {
                 alerta.setMessage("Registro agregado exitosamente");
                 alerta.setTitle("Registro");

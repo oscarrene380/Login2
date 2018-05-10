@@ -16,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
     String Consulta;
     SQLiteDatabase bd;
     Cursor c;
-
+    private sesion session;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         EditText usr = (EditText)findViewById(R.id.etUsuario);
@@ -28,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
         bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
         IniciarBD();
-
+        session=new sesion(this);
+        if(session.loggedin())
+        {
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));
+            finish();
+        }
 
     }
 
@@ -123,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, MapsActivity.class);
                 i.putExtra("Username",user);
                 startActivity(i);
+                session.setLoggedin(true);
+                finish();
             }
         }
     }
@@ -131,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent i = new Intent(MainActivity.this, RegistrarActivity.class);
         startActivity(i);
+        finish();
     }
 }

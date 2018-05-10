@@ -37,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     SQLiteDatabase bd;
     Cursor c;
     String consulta;
+    private sesion session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         bdSistema = new BDSistema(this,"BDSistema",null,1);
         bd = bdSistema.getWritableDatabase();
         //mostrarMarcadores();
+        session=new sesion(this);
     }
 
 
@@ -211,5 +213,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     {
         Intent i = new Intent(MapsActivity.this, MainActivity.class);
         startActivity(i);
+        session.setLoggedin(false);
+        finish();
     }
 }

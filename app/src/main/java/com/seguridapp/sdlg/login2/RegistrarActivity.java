@@ -2,19 +2,89 @@ package com.seguridapp.sdlg.login2;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-public class RegistrarActivity extends AppCompatActivity {
+public class RegistrarActivity extends AppCompatActivity
+{
 
-    Usuarios usuarios  = new Usuarios();
+
+    private String email;
+    private String password;
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    BDSistema bdSistema;
+    String Consulta;
+    SQLiteDatabase bd;
+    Cursor c;
+
+    public boolean registrarUsuario()
+    {
+        String consulgta=null;
+        boolean resultado=false;
+        try
+        {
+            Consulta = "insert into tblUsuarios (Email,Password) ";
+            Consulta += "VALUES ('"+getEmail()+"' , '"+getPassword()+"')";
+            bd.execSQL(Consulta);
+            resultado=true;
+        }
+        catch (Exception ex)
+        {
+            resultado=false;
+        }
+        return resultado;
+    }
+
+    public boolean validarCorreo()
+    {
+        String consulta="SELECT * FROM tblUsuarios WHERE Email='"+getEmail()+"' ";
+        boolean resultado=false;
+        try
+        {
+            c=bd.rawQuery(consulta,null);
+            if(c.moveToFirst())
+            {
+                resultado=true;
+            }
+        }
+        catch (Exception ex)
+        {
+            resultado=true;
+        }
+        return resultado;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+        bdSistema = new BDSistema(this,"BDSistema",null,1);
+        bd = bdSistema.getWritableDatabase();
+        bd=bdSistema.getReadableDatabase();
     }
 
     void Atras()
@@ -75,7 +145,7 @@ public class RegistrarActivity extends AppCompatActivity {
             AlertDialog alerta1 = alerta.create();
             alerta1.show();
         }
-        else if (usuarios.validarCorreo())
+        else if (validarCorreo())
         {
             alerta.setMessage("El correo eléctronico ya existe en el registro");
             alerta.setTitle("Error");
@@ -94,9 +164,9 @@ public class RegistrarActivity extends AppCompatActivity {
         }
         else
         {
-            usuarios.setPassword(pass);
-            usuarios.setEmail(email);
-            if(usuarios.registrarUsuario())
+            setPassword(pass);
+            setEmail(email);
+            if(registrarUsuario())
             {
                 alerta.setMessage("Registro agregado exitosamente");
                 alerta.setTitle("Registro");

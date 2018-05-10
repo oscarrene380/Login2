@@ -3,153 +3,193 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\f24e41fd70518f3bb671fe36e3671889\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.0.aar\546662802b6a1e631b8e53df87500233\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
-        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\4.jar" />
+        sha1="49f91d16acc6a0dc76746eba924e8f5fd4acd4fa">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\2a144b7fe728e018d87d77bea0fd8776\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\d8d0fcb0a6a460af5917689a4c26707f\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\2.jar" />
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\e49ff956dc170acfcb9b2c63cbe4592b\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\13.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\14.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\6967c004451bb632a1b69d332ab8d697\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\11.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\d7ba995235b00c496324c62a72d5b78a\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\10.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\d6ab174cf6c75258cc04e95eb3000ad0\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
-        jumboMode="false"
-        min-sdk-version="16"
-        optimize="true"
-        revision="26.0.2"
-        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\15.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7220864ac070be0743e4e912375ff85f\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\215bc9c1634e495665eca5516b078bc9\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
         sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\8.jar" />
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\12.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\cf19f2f6529d704f0ec6633bc732c771\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\75755b5de6c7b58d62269e063581c0ae\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
-        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\3.jar" />
+        sha1="8d813c05361147f6f515f749df19223cd6256314">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\ca95226c802e3135e9e07f140f6ea39e\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\55316fdc7483a9c28d4d254343d2dbe0\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
-        sha1="508f50705b4fde51a16259f29c854201a3044516">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\9.jar" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\9.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\16e3760f61d103a3373e5215ad893d4a\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\64f9954a8e3c55806ce975a1775ab5b8\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
-        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\1.jar" />
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\14.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\12.jar" />
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\15.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Usuario\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\90156bb1993fe769a871f815c4d72a08\jars\classes.jar"
+        jar="C:\Users\Don Jose\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\18ad05ad478291670841741aa02cead9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4d4d98a0428b2e620e6b4a228ef9f7cb2f0debd2">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cb1a42aa1eb88499a081a9b9eae76e82\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\8e11ec2a1556c6bdea49eeafb036b16d\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="16"
         optimize="true"
         revision="26.0.2"
         sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
-        <dex dex="C:\Users\Usuario\Documents\Login2\app\build\intermediates\transforms\preDex\release\6.jar" />
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\e1e3b69dc7f712bc7b4d42836fc9c56c\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\022ae4c35eb3a0bb4f7527879b69c3a3\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\ff2fc9df3185dc756077aa7a7f1ad206\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d8fe6d91310b54734f454dd490c3c869f6290576">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\6a420dd91091fe86d8fe618a6554670d\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\d7b10c6c7b60f301191d93e3fdd29e6e\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Don Jose\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\fce57720d1c711f974b0e9b0af9e6fd9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="D:\Documents\GitHub\Login2\app\build\intermediates\transforms\preDex\release\4.jar" />
     </item>
 
 </items>

@@ -12,7 +12,6 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Usuarios usuarios = new Usuarios();
     BDSistema bdSistema;
     String Consulta;
     SQLiteDatabase bd;

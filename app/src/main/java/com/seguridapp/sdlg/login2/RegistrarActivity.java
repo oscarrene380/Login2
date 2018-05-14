@@ -2,8 +2,6 @@ package com.seguridapp.sdlg.login2;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,62 +10,12 @@ import android.widget.EditText;
 
 public class RegistrarActivity extends AppCompatActivity
 {
-
-
-    private String email;
-    private String password;
-
-
-    BDSistema bdSistema;
-    String Consulta;
-    SQLiteDatabase bd;
-    Cursor c;
-
-    public boolean registrarUsuario(String email,String password)
-    {
-        String consulgta=null;
-        boolean resultado=false;
-        try
-        {
-            Consulta = "insert into tblUsuarios (Email,Password) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"')";
-            bd.execSQL(Consulta);
-            resultado=true;
-        }
-        catch (Exception ex)
-        {
-            resultado=false;
-        }
-        return resultado;
-    }
-
-    public boolean validarCorreo(String email)
-    {
-        String consulta="SELECT * FROM tblUsuarios WHERE Email='"+email+"' ";
-        boolean resultado=false;
-        try
-        {
-            c=bd.rawQuery(consulta,null);
-            if(c.moveToFirst())
-            {
-                resultado=true;
-            }
-        }
-        catch (Exception ex)
-        {
-            resultado=true;
-        }
-        return resultado;
-    }
+    usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
-        bdSistema = new BDSistema(this,"BDSistema",null,1);
-        bd = bdSistema.getWritableDatabase();
-        bd=bdSistema.getReadableDatabase();
-        email=null;
-        password=null;
+        user=new usuarios(this);
     }
 
     void Atras()
@@ -98,8 +46,8 @@ public class RegistrarActivity extends AppCompatActivity
         String pass = pss.getText().toString();
         String pass1 = pss1.getText().toString();
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
-
-
+        user.setEmail(email);
+        user.setPassword(pass);
         if (email.isEmpty())
         {
             em.setError("Introduzca su email");
@@ -129,7 +77,7 @@ public class RegistrarActivity extends AppCompatActivity
             AlertDialog alerta1 = alerta.create();
             alerta1.show();
         }
-        else if (validarCorreo(email))
+        else if (user.validarCorreo())
         {
             alerta.setMessage("El correo eléctronico ya existe en el registro");
             alerta.setTitle("Error");
@@ -148,9 +96,8 @@ public class RegistrarActivity extends AppCompatActivity
         }
         else
         {
-            this.email=email;
-            password=pass;
-            if(registrarUsuario(this.email,this.password))
+
+            if(user.registrarUsuario())
             {
                 alerta.setMessage("Registro agregado exitosamente");
                 alerta.setTitle("Registro");

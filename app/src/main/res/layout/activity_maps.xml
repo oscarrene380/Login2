@@ -18,6 +18,13 @@
         android:text="Cerrar Sesion"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="123dp"
+        android:layout_height="38dp"
+        android:onClick="editar"
+        android:text="editar" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

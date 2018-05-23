@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+
+import java.util.regex.Pattern;
 
 public class RegistrarActivity extends AppCompatActivity
 {
@@ -31,6 +34,13 @@ public class RegistrarActivity extends AppCompatActivity
 
     }
 
+    private boolean validarEmail(String email)
+    {
+        Pattern pattern= Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -51,6 +61,10 @@ public class RegistrarActivity extends AppCompatActivity
         if (email.isEmpty())
         {
             em.setError("Introduzca su email");
+        }
+        else if(!validarEmail(email))
+        {
+            em.setError("Email no valido!");
         }
         else if (pass.isEmpty())
         {

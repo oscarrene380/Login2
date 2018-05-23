@@ -216,4 +216,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         session.setLoggedin(false);
         finish();
     }
+    public void editar(View view)
+    {
+        Intent i = new Intent(MapsActivity.this, EditUserActivity.class);
+        startActivity(i);
+        finish();
+    }
 }

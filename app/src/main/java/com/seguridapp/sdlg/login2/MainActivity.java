@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 session.setLoggedin(true);
                 finish();
-            }
+        }
         }
     }
 

@@ -26,6 +26,27 @@ public class sesion
         editor.commit();
     }
 
+    public void setNivelActivo(int nivelUsuario){
+    editor.putInt("nivelUsuario",nivelUsuario);
+    editor.commit();
+}
+
+    public int nivelActivo()
+    {
+        return  prefs.getInt("nivelUsuario",0);
+    }
+
+    public void setUsuarioActivo(String usuarioActivo){
+        editor.putString("usuarioActivo",usuarioActivo);
+        editor.commit();
+    }
+
+    public String usuarioActivo()
+    {
+        return  prefs.getString("usuarioActivo","");
+    }
+
+
     public boolean loggedin(){
         return prefs.getBoolean("loggedInmode", false);
     }

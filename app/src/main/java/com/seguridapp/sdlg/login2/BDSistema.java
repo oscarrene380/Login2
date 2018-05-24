@@ -10,8 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BDSistema extends SQLiteOpenHelper {
 
-    String sqlCrear = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT,Estado INTEGER)";
-    String sqlCrear1 = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT, Alias TEXT)";
+    String sqlCrear = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT,Estado INTEGER,Nivel INTEGER)";
     String sqlPosiciones = "CREATE TABLE tblPosiciones(latitud DECIMAL(10,8),longitud DECIMAL(10,8),idUsuario TEXT, motivo TEXT,descripcion TEXT)";
     String sqlCrearMotivos = "CREATE TABLE tblMotivos(idMotivo INTEGER PRIMARY KEY AUTOINCREMENT, Motivo TEXT)";
 

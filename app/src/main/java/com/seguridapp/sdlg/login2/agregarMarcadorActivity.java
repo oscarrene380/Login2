@@ -47,6 +47,12 @@ public class agregarMarcadorActivity extends AppCompatActivity {
         this.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     /*public void llenarCombo()
     {
         List<String> motivos = new ArrayList<>();

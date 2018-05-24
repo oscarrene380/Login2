@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:orientation="vertical"
+    tools:context="com.seguridapp.sdlg.login2.adminPantallaActivity">
+
+    <TextView
+        android:id="@+id/tvEspacioPadding"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panel de Administrador"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btVerMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:onClick="irMapa"
+        android:text="Ver Mapa"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/btEditarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="irEditarPerfil"
+        android:text="Editar Perfil"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/btAgregarAdministrador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:onClick="irAgregarAdministrador"
+        android:text="Agregar Administrador"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/btAdministrarMarcadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Administrar Marcadores"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/btCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        android:onClick="irCerrarSesion"
+        android:text="Cerrar Sesión"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+</LinearLayout>

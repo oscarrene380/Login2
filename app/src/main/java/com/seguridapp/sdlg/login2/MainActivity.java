@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,8 +33,20 @@ public class MainActivity extends AppCompatActivity {
         session=new sesion(this);
         if(session.loggedin())
         {
-            startActivity(new Intent(MainActivity.this,MapsActivity.class));
-            finish();
+            if (session.nivelActivo() == 1){
+                Intent i = new Intent(MainActivity.this,MapsActivity.class);
+                i.putExtra("Username",session.usuarioActivo());
+                Toast.makeText(this, "Bienvenid@ de nuevo, "+session.usuarioActivo(), Toast.LENGTH_LONG).show();
+                startActivity(i);
+                finish();
+            }
+            else if(session.nivelActivo() == 2){
+                Intent i = new Intent(MainActivity.this,adminPantallaActivity.class);
+                i.putExtra("Username",session.usuarioActivo());
+                Toast.makeText(this, "Bienvenid@ de nuevo, "+session.usuarioActivo(), Toast.LENGTH_LONG).show();
+                startActivity(i);
+                finish();
+            }
         }
 
     }
@@ -51,22 +64,28 @@ public class MainActivity extends AppCompatActivity {
             bd.execSQL("insert into tblMotivos(Motivo) values ('Escena de violencia')");
             String email = "oscar", password = "123";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado,Nivel) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',0,1)";
             bd.execSQL(Consulta);
 
             email = "alex";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado,Nivel) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1,1)";
             bd.execSQL(Consulta);
 
             email = "fernando";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado,Nivel) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1,1)";
             bd.execSQL(Consulta);
 
+
+            email = "admin";
+            //Creando cadena SQL
+            Consulta = "insert into tblUsuarios (Email,Password,Estado,Nivel) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1,2)";
+            bd.execSQL(Consulta);
             //bd.close();
         }
         else{
@@ -129,13 +148,65 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
+                int nivel = 0;
+                int Estadousr = 0;
+                boolean estado = false;
 
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
-                i.putExtra("Username",user);
-                startActivity(i);
-                session.setLoggedin(true);
-                finish();
-        }
+                c = bd.rawQuery("Select Nivel,Estado from tblUsuarios where Email = '"+user+"'", null);
+                if (c.moveToFirst()) {
+                    //Recorremos el cursor hasta que no haya más registros
+                    do {
+                        nivel = c.getInt(0);
+                        Estadousr = c.getInt(1);
+
+                    } while (c.moveToNext());
+                }
+                if (Estadousr != 0){
+                    if (nivel == 1){
+                        Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                        i.putExtra("Username",user);
+                        startActivity(i);
+                        session.setLoggedin(true);
+                        session.setNivelActivo(1);
+                        session.setUsuarioActivo(user);
+                        finish();
+                    }
+                    else if(nivel == 2){
+                        Intent i = new Intent(MainActivity.this, adminPantallaActivity.class);
+                        i.putExtra("Username",user);
+                        startActivity(i);
+                        session.setLoggedin(true);
+                        session.setNivelActivo(2);
+                        session.setUsuarioActivo(user);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(this, "Error obteniendo nivel de usuario", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    AlertDialog.Builder ale = new AlertDialog.Builder(this);
+                    ale.setMessage("El usuario no existe en el registro");
+                    ale.setTitle("Error de credenciales");
+                    ale.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            EditText usr = findViewById((R.id.etUsuario));
+                            EditText pss = findViewById(R.id.etPassword);
+                            dialog.cancel();
+                            usr.setText("");
+                            pss.setText("");
+                        }
+                    });
+                    AlertDialog alerta = ale.create();
+                    alerta.show();
+                    usr.setText("");
+                    pss.setText("");
+                    usr.requestFocus();
+                }
+
+
+            }
         }
     }
 
@@ -145,8 +216,9 @@ public class MainActivity extends AppCompatActivity {
     public void Registrar(View v)
     {
         Intent i = new Intent(MainActivity.this, RegistrarActivity.class);
+        i.putExtra("Nivel","1");
         startActivity(i);
-        finish();
+
     }
 
 }

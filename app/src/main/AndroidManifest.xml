@@ -46,8 +46,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".EditUserActivity" />
-
-        <activity android:name=".agregarMarcadorActivity"></activity>
+        <activity android:name=".agregarMarcadorActivity" />
+        <activity android:name=".adminPantallaActivity"></activity>
     </application>
 
 </manifest>

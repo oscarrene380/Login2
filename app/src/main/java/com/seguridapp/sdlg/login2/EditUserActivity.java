@@ -24,6 +24,11 @@ public class EditUserActivity extends AppCompatActivity
         //cbEditarPass.setOnCheckedChangeListener(new MyCheckedChangeListener(2));*/
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
 
 

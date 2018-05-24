@@ -13,12 +13,14 @@ import java.util.regex.Pattern;
 
 public class RegistrarActivity extends AppCompatActivity
 {
+    int Nivel = 0;
     usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
         user=new usuarios(this);
+        Nivel = Integer.valueOf(getIntent().getStringExtra("Nivel").toString());
     }
 
     void Atras()
@@ -30,7 +32,7 @@ public class RegistrarActivity extends AppCompatActivity
 
     public void Cancelar(View v)
     {
-        Atras();
+       finish();
 
     }
 
@@ -44,7 +46,7 @@ public class RegistrarActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Atras();
+        finish();
     }
 
     public void Registrar(View v)
@@ -58,6 +60,7 @@ public class RegistrarActivity extends AppCompatActivity
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         user.setEmail(email);
         user.setPassword(pass);
+        user.setNivel(Nivel);
         if (email.isEmpty())
         {
             em.setError("Introduzca su email");

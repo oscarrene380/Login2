@@ -46,13 +46,23 @@ public class usuarios
         this.password = password;
     }
 
+    public int getNivel() {
+        return Nivel;
+    }
+
+    public void setNivel(int nivel) {
+        Nivel = nivel;
+    }
+
+    private int Nivel;
+
     public boolean registrarUsuario()
     {
         String consulta=null;
         boolean resultado=false;
         try
         {
-            consulta = "insert into tblUsuarios (Email,Password) VALUES ('"+getEmail()+"' , '"+getPassword()+"')";
+            consulta = "insert into tblUsuarios (Email,Password,Estado,Nivel) VALUES ('"+getEmail()+"' , '"+getPassword()+"',1,"+getNivel()+")";
             bd.execSQL(consulta);
             resultado=true;
         }

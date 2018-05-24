@@ -23,4 +23,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="aceptar">Aceptar</string>
+    <string name="qu_ocurri_ac">¿Qué ocurrió acá?</string>
+    <string name="motivo">Motivo</string>
 </resources>

@@ -38,6 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Cursor c;
     String consulta;
     private sesion session;
+    String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +49,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        bdSistema = new BDSistema(this,"BDSistema",null,1);
+        bdSistema = new BDSistema(this, "BDSistema", null, 1);
         bd = bdSistema.getWritableDatabase();
         //mostrarMarcadores();
-        session=new sesion(this);
+        session = new sesion(this);
+        usuario = getIntent().getStringExtra("Username");
+
     }
 
 
@@ -90,12 +93,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public void onProviderEnabled(String provider) {
-
+            Toast.makeText(getApplicationContext(), "Servicios activados exitosamente", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-
+            Toast.makeText(getApplicationContext(), "Por favor, active los servicios de GPS para el buen funcionamiento de la aplicación", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -108,48 +111,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         actualizarUbicacion(location);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,15000,0,locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locationListener);
     }
+
+
+    //Método para mostrar formulario
 
 
     //Método para mostrar los marcadores guardados
     public void mostrarMarcadores(GoogleMap googleMap) {
-        try{
+        try {
             mMap = googleMap;
             double latitud;
             double longitud;
             /*c = bd.rawQuery("Select count(*) from tblPosiciones",null);
             int total = c.getInt(0);*/
-            c = bd.rawQuery("Select * from tblPosiciones",null);
+            c = bd.rawQuery("Select * from tblPosiciones", null);
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    latitud= c.getDouble(0);
-                    longitud= c.getDouble(1);
-                    LatLng punto = new LatLng(latitud,longitud);
+                    latitud = c.getDouble(0);
+                    longitud = c.getDouble(1);
+                    LatLng punto = new LatLng(latitud, longitud);
                     mMap.addMarker(new MarkerOptions()
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-                            .anchor(0.0f,1.0f)
+                            .anchor(0.0f, 1.0f)
                             .position(punto)
                     );
-                } while(c.moveToNext());
+                } while (c.moveToNext());
 
 
-                Toast.makeText(getApplicationContext(),"Marcadores actualizados exitosamente",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Marcadores actualizados exitosamente", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "No hay marcadores en la base de Datos", Toast.LENGTH_SHORT).show();
             }
-            else{
-                Toast.makeText(getApplicationContext(),"No hay marcadores en la base de Datos",Toast.LENGTH_SHORT).show();
-            }
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(getApplicationContext(),"Ha ocurrido un error inesperado",Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Ha ocurrido un error inesperado", Toast.LENGTH_SHORT).show();
         }
 
     }
-
-
-
 
 
     /**
@@ -177,29 +177,64 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMapLongClick(LatLng latLng) {
                 double latitud = latLng.latitude;
                 double longitud = latLng.longitude;
-                consulta = "insert into tblPosiciones(latitud,longitud)";
-                consulta += "values ("+latitud+","+longitud+")";
-
-                try{
+                String latitud1 = String.valueOf(latitud);
+                String longitud1 = String.valueOf(longitud);
+                Intent i = new Intent(MapsActivity.this,agregarMarcadorActivity.class);
+                i.putExtra("Usuario",usuario);
+                i.putExtra("latitud",latitud1);
+                i.putExtra("longitud",longitud1);
+                startActivity(i);
+                finish();
+                /*consulta = "insert into tblPosiciones(latitud,longitud)";
+                consulta += "values (" + latitud + "," + longitud + ")";
+                try {
                     bd.execSQL(consulta);
-                    Toast.makeText(getApplicationContext(),"Marcador guardado en\nLatitud: "+latitud+"\nLongitud:  "+longitud,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Marcador guardado en\nLatitud: " + latitud + "\nLongitud:  " + longitud, Toast.LENGTH_SHORT).show();
                     mMap.addMarker(new MarkerOptions()
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-                            .anchor(0.0f,1.0f)
+                            .anchor(0.0f, 1.0f)
                             .position(latLng)
                     );
 
-                }
-                catch(Exception e){
-                    Toast.makeText(getApplicationContext(),"No se pudieron guardar los datos",Toast.LENGTH_LONG).show();
-                }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "No se pudieron guardar los datos", Toast.LENGTH_LONG).show();
+                }*/
 
             }
         });
         mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(getApplicationContext(),"Zona marcada como peligrosa",Toast.LENGTH_SHORT).show();
+
+
+                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                }
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                double latitud = marker.getPosition().latitude;
+                double longitud = marker.getPosition().longitude;
+                if (location.getLatitude() == latitud && location.getLongitude() == longitud){
+
+                }
+                else{
+                    String usuario1,motivo,descripcion;
+                    c = bd.rawQuery("Select idUsuario,motivo,descripcion from tblPosiciones where latitud = "+latitud+" and longitud = "+longitud, null);
+                    if (c.moveToFirst()) {
+                        //Recorremos el cursor hasta que no haya más registros
+
+                        do {
+                            usuario1 = c.getString(0);
+                            motivo= c.getString(1);
+                            descripcion = c.getString(2);
+                        } while (c.moveToNext());
+                        marker.setTitle(usuario1+": "+descripcion);
+                        Toast.makeText(getApplicationContext(),"Zona marcada por "+motivo,Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+                }
                 return false;
             }
         });

@@ -10,9 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BDSistema extends SQLiteOpenHelper {
 
-    String sqlCrear = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT)";
+    String sqlCrear = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT,Estado INTEGER)";
     String sqlCrear1 = "CREATE TABLE tblUsuarios(idUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT, Alias TEXT)";
-    String sqlPosiciones = "CREATE TABLE tblPosiciones(latitud DECIMAL(10,8),longitud DECIMAL(10,8))";
+    String sqlPosiciones = "CREATE TABLE tblPosiciones(latitud DECIMAL(10,8),longitud DECIMAL(10,8),idUsuario TEXT, motivo TEXT,descripcion TEXT)";
+    String sqlCrearMotivos = "CREATE TABLE tblMotivos(idMotivo INTEGER PRIMARY KEY AUTOINCREMENT, Motivo TEXT)";
 
     public BDSistema(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -23,6 +24,7 @@ public class BDSistema extends SQLiteOpenHelper {
         //Si no existe la BD, crea la BD, la crea y ejecuta los siguientes comandos.
         db.execSQL(sqlCrear);
         db.execSQL(sqlPosiciones);
+        db.execSQL(sqlCrearMotivos);
     }
 
     @Override

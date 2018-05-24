@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
@@ -45,23 +45,26 @@ public class MainActivity extends AppCompatActivity {
         {
             //Generar valores
             //int idUsuario= i;
-
+            bd.execSQL("insert into tblMotivos(Motivo) values ('Robo')");
+            bd.execSQL("insert into tblMotivos(Motivo) values ('Asalto')");
+            bd.execSQL("insert into tblMotivos(Motivo) values ('Acto delictivo')");
+            bd.execSQL("insert into tblMotivos(Motivo) values ('Escena de violencia')");
             String email = "oscar", password = "123";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"')";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
             bd.execSQL(Consulta);
 
             email = "alex";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"')";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
             bd.execSQL(Consulta);
 
             email = "fernando";
             //Creando cadena SQL
-            Consulta = "insert into tblUsuarios (Email,Password) ";
-            Consulta += "VALUES ('"+email+"' , '"+password+"')";
+            Consulta = "insert into tblUsuarios (Email,Password,Estado) ";
+            Consulta += "VALUES ('"+email+"' , '"+password+"',1)";
             bd.execSQL(Consulta);
 
             //bd.close();
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 pss.setError("Campo vacío");
             }
             //else if(!usuarios.validarCorreo(user) || !usuarios.getPassword(user).equals(pass))
-            else if(!c.moveToFirst())
+            else if(!c.moveToFirst() && c.getInt(3) == 1)
             {
                 AlertDialog.Builder ale = new AlertDialog.Builder(this);
                 ale.setMessage("Correo o contraseña inválidos");
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
+
                 Intent i = new Intent(MainActivity.this, MapsActivity.class);
                 i.putExtra("Username",user);
                 startActivity(i);
@@ -134,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
+
 
     public void Registrar(View v)
     {

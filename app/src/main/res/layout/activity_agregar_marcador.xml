@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context="com.seguridapp.sdlg.login2.agregarMarcadorActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_marginBottom="19dp"
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:text="@string/qu_ocurri_ac"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etDescripcion"
+        android:layout_alignLeft="@+id/etDescripcion"
+        android:layout_alignStart="@+id/etDescripcion"
+        android:text="Descripción"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spMotivo"
+        android:layout_alignLeft="@+id/spMotivo"
+        android:layout_alignStart="@+id/spMotivo"
+        android:text="@string/motivo"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <Spinner
+        android:id="@+id/spMotivo"
+        android:layout_width="341dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/etDescripcion"
+        android:layout_alignLeft="@+id/etDescripcion"
+        android:layout_alignStart="@+id/etDescripcion"
+        android:layout_marginBottom="59dp"
+        android:background="@color/common_google_signin_btn_text_dark_pressed"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <EditText
+        android:id="@+id/etDescripcion"
+        android:layout_width="327dp"
+        android:layout_height="173dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="136dp"
+        android:background="@color/common_google_signin_btn_text_dark_pressed"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="209dp" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="144dp"
+        android:layout_height="48dp"
+        android:layout_alignBottom="@+id/btAceptar"
+        android:layout_alignEnd="@+id/etDescripcion"
+        android:layout_alignRight="@+id/etDescripcion"
+        android:background="@android:color/holo_red_light"
+        android:onClick="CancelarButton"
+        android:text="Cancelar"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="402dp" />
+
+    <Button
+        android:id="@+id/btAceptar"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_alignLeft="@+id/etDescripcion"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/etDescripcion"
+        android:layout_marginBottom="71dp"
+        android:background="@android:color/holo_blue_dark"
+        android:onClick="Aceptar"
+        android:text="@string/aceptar"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="402dp" />
+</RelativeLayout>

@@ -48,7 +48,8 @@
         <activity android:name=".EditUserActivity" />
         <activity
             android:name=".MantenimientoActivity"
-            android:label="@string/title_activity_mantenimiento"></activity>
+            android:label="@string/title_activity_mantenimiento" />
+        <activity android:name=".agregarMarcadorActivity"></activity>
     </application>
 
 </manifest>

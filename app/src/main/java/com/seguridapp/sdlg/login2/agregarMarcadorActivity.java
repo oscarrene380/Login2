@@ -84,8 +84,8 @@ public class agregarMarcadorActivity extends AppCompatActivity {
         String descripcion = descripcion1.getText().toString();
 
         String motivo = sp.getSelectedItem().toString().trim();
-        consulta = "insert into tblPosiciones(latitud,longitud,idUsuario,motivo,descripcion)";
-        consulta += "values (" + latitud + "," + longitud + ",'"+usuario+"','"+motivo+"','"+descripcion+"')";
+        consulta = "insert into tblPosiciones(latitud,longitud,idUsuario,motivo,descripcion,estado)";
+        consulta += "values (" + latitud + "," + longitud + ",'"+usuario+"','"+motivo+"','"+descripcion+"',1)";
         //Toast.makeText(this, consulta, Toast.LENGTH_LONG).show();
         if (validarCampos()){
             try {

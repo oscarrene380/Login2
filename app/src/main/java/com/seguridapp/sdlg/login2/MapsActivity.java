@@ -134,18 +134,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double longitud;
             /*c = bd.rawQuery("Select count(*) from tblPosiciones",null);
             int total = c.getInt(0);*/
-            c = bd.rawQuery("Select * from tblPosiciones", null);
+            c = bd.rawQuery("Select latitud,longitud,estado from tblPosiciones", null);
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    latitud = c.getDouble(0);
-                    longitud = c.getDouble(1);
-                    LatLng punto = new LatLng(latitud, longitud);
-                    mMap.addMarker(new MarkerOptions()
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-                            .anchor(0.0f, 1.0f)
-                            .position(punto)
-                    );
+                    if (c.getInt(2) == 1){
+                        latitud = c.getDouble(0);
+                        longitud = c.getDouble(1);
+                        LatLng punto = new LatLng(latitud, longitud);
+                        mMap.addMarker(new MarkerOptions()
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                                .anchor(0.0f, 1.0f)
+                                .position(punto)
+                        );
+                    }
                 } while (c.moveToNext());
 
 

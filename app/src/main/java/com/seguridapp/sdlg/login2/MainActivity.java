@@ -204,8 +204,6 @@ public class MainActivity extends AppCompatActivity {
                     pss.setText("");
                     usr.requestFocus();
                 }
-
-
             }
         }
     }

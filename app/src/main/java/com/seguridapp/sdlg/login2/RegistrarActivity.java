@@ -40,7 +40,6 @@ public class RegistrarActivity extends AppCompatActivity
     {
         Pattern pattern= Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
-
     }
 
     @Override

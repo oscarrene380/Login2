@@ -108,28 +108,29 @@
         tools:layout_editor_absoluteY="303dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button4"
-        android:layout_alignBottom="@+id/button4"
-        android:layout_toEndOf="@+id/button"
-        android:layout_toRightOf="@+id/button"
+        android:layout_above="@+id/btnDesactivar"
+        android:layout_alignEnd="@+id/txtCheckPass"
+        android:layout_alignRight="@+id/txtCheckPass"
         android:background="@color/colorPrimary"
+        android:onClick="actualizar"
         android:text="Guardar"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         tools:layout_editor_absoluteX="224dp"
         tools:layout_editor_absoluteY="342dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_marginBottom="19dp"
-        android:layout_toLeftOf="@+id/button3"
-        android:layout_toStartOf="@+id/button3"
+        android:layout_below="@+id/txtCheckPass"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/textView22"
+        android:layout_toRightOf="@+id/textView22"
         android:background="@android:color/holo_red_light"
+        android:onClick="cancelar"
         android:text="Cancelar"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         tools:layout_editor_absoluteX="118dp"
@@ -149,24 +150,28 @@
         tools:layout_editor_absoluteY="227dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDesactivar"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignEnd="@+id/btnSave"
+        android:layout_alignLeft="@+id/btnCancel"
+        android:layout_alignRight="@+id/btnSave"
+        android:layout_alignStart="@+id/btnCancel"
+        android:layout_below="@+id/btnCancel"
         android:background="@android:color/holo_red_dark"
-        android:text="Button"
+        android:onClick="desactivar"
+        android:text="Desactivar cuenta"
         android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="118dp"
         tools:layout_editor_absoluteY="403dp"
         tools:text="Desactivar cuenta" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5"
+        android:layout_alignLeft="@+id/txtPassword"
+        android:layout_alignStart="@+id/txtPassword"
         android:layout_alignTop="@+id/textView17"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:ems="10"
@@ -174,7 +179,20 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/txtNewUser"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtNewPass"
+        android:layout_alignStart="@+id/txtNewPass"
+        android:layout_alignTop="@+id/textView25"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:ems="10"
+        android:hint="New User"
+        android:inputType="textPersonName"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    <EditText
+        android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView18"
@@ -187,7 +205,7 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/txtPasswordA"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView20"
@@ -195,8 +213,53 @@
         android:layout_alignRight="@+id/textView16"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    <EditText
+        android:id="@+id/txtNewPass"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPasswordA"
+        android:layout_alignStart="@+id/txtPasswordA"
+        android:layout_alignTop="@+id/textView22"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:ems="10"
+        android:hint="New Password"
+        android:inputType="textPassword"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    <EditText
+        android:id="@+id/txtCheckPass"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtNewPass"
+        android:layout_alignStart="@+id/txtNewPass"
+        android:layout_alignTop="@+id/textView23"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:ems="10"
+        android:hint="Check Password"
+        android:inputType="textPassword"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    <CheckBox
+        android:id="@+id/cbUser"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/txtNewUser"
+        android:layout_toEndOf="@+id/txtNewUser"
+        android:layout_toRightOf="@+id/txtNewUser"
+        android:background="@color/common_google_signin_btn_text_dark_default" />
+
+    <CheckBox
+        android:id="@+id/cbPass"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/txtNewPass"
+        android:layout_toEndOf="@+id/txtNewPass"
+        android:layout_toRightOf="@+id/txtNewPass"
+        android:background="@color/common_google_signin_btn_text_dark_default" />
 
 
 </RelativeLayout>

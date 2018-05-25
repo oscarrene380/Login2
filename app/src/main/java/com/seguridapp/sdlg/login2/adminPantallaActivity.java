@@ -36,6 +36,12 @@ public class adminPantallaActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void irMarcadores(View v)
+    {
+        Intent i = new Intent(adminPantallaActivity.this, listaMarcadoresActivity.class);
+        startActivity(i);
+    }
+
     public void irAgregarAdministrador(View v)
     {
         Intent i = new Intent(adminPantallaActivity.this, RegistrarActivity.class);

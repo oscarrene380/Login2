@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 pss.setError("Campo vacío");
             }
             //else if(!usuarios.validarCorreo(user) || !usuarios.getPassword(user).equals(pass))
-            else if(!c.moveToFirst() && c.getInt(3) == 1)
+            else if(!c.moveToFirst())
             {
                 AlertDialog.Builder ale = new AlertDialog.Builder(this);
                 ale.setMessage("Correo o contraseña inválidos");

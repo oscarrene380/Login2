@@ -121,7 +121,9 @@ public class RegistrarActivity extends AppCompatActivity
                 alerta.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Atras();
+                        Intent i = new Intent(RegistrarActivity.this,MainActivity.class);
+                        finish();
+                        startActivity(i);
                     }
                 });
                 AlertDialog alerta1 = alerta.create();

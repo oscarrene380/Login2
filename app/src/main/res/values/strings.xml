@@ -26,4 +26,8 @@
     <string name="aceptar">Aceptar</string>
     <string name="qu_ocurri_ac">¿Qué ocurrió acá?</string>
     <string name="motivo">Motivo</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
